@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { connect } from "react-redux"
+import { useNavigate } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 
 
 export const Login = (props) => {
     const [loggedUser, setLoggedUser] = useState("")
+    const navigate = useNavigate()
     const { dispatch } = props;
     const handleLoginChange = (e) => {
         e.target.value === "Select User" ? setLoggedUser("") : setLoggedUser(e.target.value)
+        navigate("/home")
     }
     dispatch(setAuthedUser(loggedUser));
     return (<>

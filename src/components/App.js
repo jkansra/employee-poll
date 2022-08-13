@@ -6,6 +6,8 @@ import Dashboard from "./Dashboard";
 import Login from "./Login";
 import NewPoll from "./NewPoll";
 import Leaderboard from "./Leaderboard";
+import Nav from "./Nav";
+import { Routes, Route } from "react-router-dom";
 
 const App = (props) => {
   useEffect(() => {
@@ -14,12 +16,15 @@ const App = (props) => {
   return (
     <>
       <LoadingBar />
-      <Login />
-      {!props.loading && <div className="container">
-        <Dashboard />
-        <NewPoll />
-        <Leaderboard />
-      </div>}
+      {!props.loading ? <div className="container">
+        <Nav />
+        <Routes>
+          <Route path="/" exact element={<Login />} />
+          <Route path="/add" element={<NewPoll />} />
+          <Route path="/home" element={<Dashboard />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+        </Routes>
+      </div> : <Login />}
     </>)
 };
 
