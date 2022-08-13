@@ -127,3 +127,15 @@ th {
 .users-column {
   display: flex;
 }
+
+.poll-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.poll-option {
+  border: 1px solid lightgrey;
+  padding: 20px;
+  margin: 0;
+}

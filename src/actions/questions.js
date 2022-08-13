@@ -1,8 +1,9 @@
 import { hideLoading, showLoading } from "react-redux-loading-bar";
-import { saveQuestion } from "../utils/api";
+import { saveQuestion, saveQuestionAnswer } from "../utils/api";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_POLL = "ADD_POLL";
+export const SUBMIT_POLL = "SUBMIT_POLL";
 
 export function receiveQuestions(questions) {
     return {
@@ -14,6 +15,13 @@ export function receiveQuestions(questions) {
 const addPoll = (question) => {
     return {
         type: ADD_POLL,
+        question
+    }
+}
+
+const submitPoll = (question) => {
+    return {
+        type: SUBMIT_POLL,
         question
     }
 }
@@ -32,4 +40,10 @@ export const handleAddPoll = (optionOneText, optionTwoText) => {
             .then((question) => dispatch(addPoll(question)))
             .then(() => dispatch(hideLoading()));
     };
+}
+
+export const handleSubmitPoll = (question) => {
+    return (dispatch) => {
+        dispatch(submitPoll(question));
+    }
 }
