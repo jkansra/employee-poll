@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { handleAddPoll } from "../actions/questions";
+import { useNavigate } from "react-router-dom";
 
 const NewPoll = ({ dispatch }) => {
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
+  const navigate = useNavigate();
 
   const handleOptionOneChange = (e) => {
     const optionOneText = e.target.value;
@@ -20,12 +22,13 @@ const NewPoll = ({ dispatch }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(optionOne + ' ' + optionTwo)
 
     dispatch(handleAddPoll(optionOne, optionTwo));
 
     setOptionOne("");
     setOptionTwo("");
+
+    navigate(`/home`)
 
   };
 

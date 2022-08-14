@@ -15,11 +15,11 @@ export default function questions(state = {}, action) {
         case SUBMIT_POLL:
             return {
                 ...state,
-                [action.question.questionId]: {
-                    ...state[action.question.questionId],
+                [action.question.qid]: {
+                    ...state[action.question.qid],
                     [action.question.answer]: {
-                        ...state[action.question.questionId][action.question.answer],
-                        votes: state[action.question.questionId][action.question.answer].votes.concat([action.question.authedUser])
+                        ...state[action.question.qid][action.question.answer],
+                        votes: state[action.question.qid][action.question.answer].votes.concat([action.question.authedUser])
                     }
                 }
             }
