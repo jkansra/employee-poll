@@ -39,9 +39,9 @@ const NewPoll = ({ dispatch }) => {
       {/* Form */}
       <form className="new-poll" onSubmit={handleSubmit}>
         <label className="center mb-10">First Option</label>
-        <input placeholder="Option One" className="mb-20" value={optionOne} onChange={handleOptionOneChange} />
+        <input placeholder="Option One" className="mb-20" value={optionOne} onChange={handleOptionOneChange} data-testid="first-option-input" />
         <label className="center mb-10">Second Option</label>
-        <input placeholder="Option Two" className="mb-20" value={optionTwo} onChange={handleOptionTwoChange} />
+        <input placeholder="Option Two" className="mb-20" value={optionTwo} onChange={handleOptionTwoChange} data-testid="second-option-input" />
         <button className="center" type="submit" disabled={optionOne === "" || optionTwo === ""}>
           Submit
         </button>

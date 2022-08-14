@@ -8,11 +8,11 @@ import reducer from "./reducers";
 import middleware from "./middleware";
 import { BrowserRouter as Router } from "react-router-dom";
 
-const store = createStore(reducer, middleware);
+export const store = createStore(reducer, middleware);
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
             <App />
         </Router>
-    </Provider>, document.getElementById("root"));
+    </Provider>, document.getElementById("root") || document.createElement('div')); // for testing

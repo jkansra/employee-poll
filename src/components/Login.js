@@ -15,7 +15,7 @@ export const Login = (props) => {
     dispatch(setAuthedUser(loggedUser));
     return (<>
         <span>Please select the user to login:&nbsp;</span>
-        <select onChange={handleLoginChange} value={loggedUser}>
+        <select onChange={handleLoginChange} value={loggedUser} data-testid="select-login">
             {props.userNames.map(userName =>
                 <option key={userName}>{userName}</option>
             )}
