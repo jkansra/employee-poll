@@ -9,6 +9,7 @@ import Leaderboard from "./Leaderboard";
 import Nav from "./Nav";
 import { Routes, Route } from "react-router-dom";
 import Poll from "./Poll";
+import NotFound from "./NotFound";
 
 const App = (props) => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const App = (props) => {
   return (
     <>
       <LoadingBar />
-      {!props.loading ? <div className="container">
+      {props.isAuthenticated ? <div className="container">
         <Nav />
         <Routes>
           <Route path="/" exact element={<Login />} />
@@ -25,13 +26,15 @@ const App = (props) => {
           <Route path="/home" element={<Dashboard />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/questions/:questionId" element={<Poll />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </div> : <Login />}
+      </div>
+        : <Login />}
     </>)
 };
 
 const mapStateToProps = ({ authedUser }) => ({
-  loading: authedUser === ""
+  isAuthenticated: authedUser !== ""
 })
 
 export default connect(mapStateToProps)(App);

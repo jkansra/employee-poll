@@ -1,29 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux"
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 
 
 export const Login = (props) => {
     const [loggedUser, setLoggedUser] = useState("")
     const navigate = useNavigate()
-    const { dispatch } = props;
+    const location = useLocation();
+    const { dispatch, userNames } = props;
+
     const handleLoginChange = (e) => {
-        e.target.value === "Select User" ? setLoggedUser("") : setLoggedUser(e.target.value)
-        navigate("/home")
+        setLoggedUser(e.target.value)
+        location.pathname === '/' ? navigate("/home") : navigate(location.pathname)
     }
-    dispatch(setAuthedUser(loggedUser));
+
+    useEffect(() => {
+        dispatch(setAuthedUser(loggedUser));
+    }, [dispatch, loggedUser])
+
     return (<>
         <span>Please select the user to login:&nbsp;</span>
         <select onChange={handleLoginChange} value={loggedUser} data-testid="select-login">
-            {props.userNames.map(userName =>
+            <option value={loggedUser}>Select User</option>
+            {userNames.map(userName =>
                 <option key={userName}>{userName}</option>
             )}
         </select></>)
 }
 
 const mapStateToProps = ({ users }) => ({
-    userNames: ["Select User", ...Object.keys(users)]
+    userNames: Object.keys(users)
 })
 
 
