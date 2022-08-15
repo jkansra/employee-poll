@@ -6,7 +6,7 @@ In the "Employee Polls" Project, an employee create polls for coworkers. The pro
 
 In your app, users will be able to answer polls, see which polls they haven’t answered, see how other people have voted, post polls, and see the ranking of users on the leaderboard.
 
-## Project Setup
+# Project Setup
 
 - Clone the Project.
 - Install the dependencies: `npm install`
@@ -16,3 +16,7 @@ In your app, users will be able to answer polls, see which polls they haven’t 
 For starting the project and run the src folder: `npm run start`
 
 For running the unit tests: `npm run test`
+
+# Author
+
+Jai Kansra
