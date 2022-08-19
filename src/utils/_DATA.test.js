@@ -21,6 +21,14 @@ describe("_DATA", () => {
         await expect(_saveQuestion(question)).rejects.toEqual("Please provide optionOneText, optionTwoText, and author");
     })
 
+    it("_saveQuestion will return the formatted question", async () => {
+        const question = {
+            optionTwoText: "React-Redux",
+            author: "testname"
+        }
+        await expect(_saveQuestion(question)).rejects.toEqual("Please provide optionOneText, optionTwoText, and author");
+    })
+
     it("_saveQuestion will throw error if incorrect question is passed", async () => {
         const question = {
             optionOneText: "React",
@@ -51,6 +59,14 @@ describe("_DATA", () => {
         const answer = {
             authedUser: "sarahedo",
             qid: "8xf0y6ziyjabvozdd253nd",
+        }
+        await expect(_saveQuestionAnswer(answer)).rejects.toEqual("Please provide authedUser, qid, and answer");
+    })
+
+    it("_saveQuestionAnswer will throw error if incorrect input is passed", async () => {
+        const answer = {
+            authedUser: "sarahedo",
+            answer: "optionOne"
         }
         await expect(_saveQuestionAnswer(answer)).rejects.toEqual("Please provide authedUser, qid, and answer");
     })
